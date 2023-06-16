@@ -45,6 +45,7 @@ class _RegisterPageState extends State<RegisterPage> {
               Text(
                 'Silakan Buat Akun Dahulu',
                 style: TextStyle(
+                  fontWeight: FontWeight.bold,
                   color: Color.fromARGB(255, 255, 255, 255),
                   fontSize: 16,
                 ),
@@ -81,6 +82,50 @@ class _RegisterPageState extends State<RegisterPage> {
               MyButton(onTap: signUserIn),
 
               const SizedBox(height: 20),
+
+              // or continue
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Divider(
+                        thickness: 1.7,
+                        color: Color.fromARGB(255, 255, 255, 255),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      child: Text(
+                        'Or Continue White',
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 255, 255, 255)),
+                      ),
+                    ),
+                    Expanded(
+                      child: Divider(
+                        thickness: 1.7,
+                        color: Color.fromARGB(255, 255, 255, 255),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+
+              const SizedBox(height: 10),
+              // google + facebook
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  // google
+                  SquareTIle(imagePath: 'lib/images/google.png'),
+
+                  const SizedBox(width: 30),
+
+                  // facebook
+                  SquareTIle(imagePath: 'lib/images/facebook.png'),
+                ],
+              ),
             ],
           ),
         ),

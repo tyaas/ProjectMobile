@@ -6,17 +6,11 @@ import 'package:tugasakhir/components/square_file.dart';
 import '../components/my_button.dart';
 import '../components/my_textfieild.dart';
 
-class LoginPage extends StatefulWidget {
+class LoginPage extends StatelessWidget {
   LoginPage({super.key});
 
-  @override
-  State<LoginPage> createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
-  // text editing and controller
+  // text editing
   final usernameController = TextEditingController();
-
   final passwordController = TextEditingController();
 
   // sign in user method
@@ -108,9 +102,8 @@ class _LoginPageState extends State<LoginPage> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 10.0),
                       child: Text(
-                        'Register Now',
+                        'Or Continue White',
                         style: TextStyle(
-                            fontWeight: FontWeight.bold,
                             color: Color.fromARGB(255, 255, 255, 255)),
                       ),
                     ),
@@ -123,7 +116,35 @@ class _LoginPageState extends State<LoginPage> {
                   ],
                 ),
               ),
-              // register n
+
+              const SizedBox(height: 10),
+              // google + facebook
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  // google
+                  SquareTIle(imagePath: 'lib/images/google.png'),
+
+                  const SizedBox(width: 30),
+
+                  // facebook
+                  SquareTIle(imagePath: 'lib/images/facebook.png'),
+                ],
+              ),
+              const SizedBox(height: 10),
+              // register now?
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Register Now',
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 255, 255, 255),
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              )
             ],
           ),
         ),
