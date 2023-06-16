@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tugasakhir/pages/home_page.dart';
 import 'package:tugasakhir/pages/login.dart';
 
-void main() {
+void main() async {
   runApp(const MyApp());
 }
 

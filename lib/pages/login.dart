@@ -6,11 +6,17 @@ import 'package:tugasakhir/components/square_file.dart';
 import '../components/my_button.dart';
 import '../components/my_textfieild.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   LoginPage({super.key});
 
-  // text editing
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  // text editing and controller
   final usernameController = TextEditingController();
+
   final passwordController = TextEditingController();
 
   // sign in user method
@@ -102,8 +108,9 @@ class LoginPage extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 10.0),
                       child: Text(
-                        'Or Continue White',
+                        'Register Now',
                         style: TextStyle(
+                            fontWeight: FontWeight.bold,
                             color: Color.fromARGB(255, 255, 255, 255)),
                       ),
                     ),
@@ -116,35 +123,7 @@ class LoginPage extends StatelessWidget {
                   ],
                 ),
               ),
-
-              const SizedBox(height: 10),
-              // google + facebook
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  // google
-                  SquareTIle(imagePath: 'lib/images/google.png'),
-
-                  const SizedBox(width: 30),
-
-                  // facebook
-                  SquareTIle(imagePath: 'lib/images/facebook.png'),
-                ],
-              ),
-              const SizedBox(height: 10),
-              // register now?
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Register Now',
-                    style: TextStyle(
-                      color: Color.fromARGB(255, 255, 255, 255),
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              )
+              // register n
             ],
           ),
         ),
