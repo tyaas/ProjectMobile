@@ -252,44 +252,47 @@ class _HomePageState extends State<HomePage> {
                     SizedBox(
                       height: 15,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                          margin: EdgeInsets.all(10),
-                          height: 120,
-                          width: 120,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: NetworkImage(
-                                    "https://spmb.teknokrat.ac.id/wp-content/uploads/2023/02/teknokrat_university-21022023-0001-1536x1536.jpg")),
-                            color: Color.fromARGB(255, 22, 0, 145),
-                            borderRadius: BorderRadius.circular(20),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            margin: EdgeInsets.all(10),
+                            height: 120,
+                            width: 120,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image: NetworkImage(
+                                      "https://spmb.teknokrat.ac.id/wp-content/uploads/2023/02/teknokrat_university-21022023-0001-1536x1536.jpg")),
+                              color: Color.fromARGB(255, 22, 0, 145),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
                           ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.all(10),
-                          height: 120,
-                          width: 200,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: NetworkImage(
-                                    "https://teknokrat.ac.id/wp-content/uploads/2023/04/maxresdefault.jpg")),
-                            borderRadius: BorderRadius.circular(20),
+                          Container(
+                            margin: EdgeInsets.all(10),
+                            height: 120,
+                            width: 200,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image: NetworkImage(
+                                      "https://teknokrat.ac.id/wp-content/uploads/2023/04/maxresdefault.jpg")),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
                           ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.all(10),
-                          height: 120,
-                          width: 120,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: NetworkImage(
-                                    "https://spmb.teknokrat.ac.id/wp-content/uploads/2023/02/teknokrat_university-21022023-0004.jpg")),
-                            borderRadius: BorderRadius.circular(20),
+                          Container(
+                            margin: EdgeInsets.all(10),
+                            height: 120,
+                            width: 120,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image: NetworkImage(
+                                      "https://spmb.teknokrat.ac.id/wp-content/uploads/2023/02/teknokrat_university-21022023-0004.jpg")),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
 
                     InkWell(

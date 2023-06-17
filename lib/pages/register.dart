@@ -2,7 +2,11 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/material.dart';
 import 'package:tugasakhir/components/square_file.dart';
-
+import 'package:tugasakhir/pages/home_page.dart';
+import 'package:flutter/services.dart';
+import 'package:http/http.dart' as http;
+import 'package:async/async.dart';
+import 'dart:convert';
 import '../components/my_button.dart';
 import '../components/my_textfieild.dart';
 
@@ -17,12 +21,44 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
 
   // text editing and controller
+  final nameController = TextEditingController();
   final usernameController = TextEditingController();
-
   final passwordController = TextEditingController();
 
   // sign in user method
-  void signUserIn() {}
+  void SignUp() async {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => HomePage()),
+    );
+    final url = Uri.parse('http://192.168.43.181:8080/login_test/register.php');
+    final body = {
+      'name': nameController.text,
+      'username': usernameController.text,
+      'pass': passwordController.text
+    };
+    try {
+      final response = await http.post(
+        url,
+        body: body,
+      );
+      if (jsonDecode(response.body)['success'] == true) {
+        print("register berhasil, silahkan login");
+      } else {
+        print('register tidak berhasil');
+      }
+    } catch (error) {
+      print(error);
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    nameController.clear();
+    usernameController.clear();
+    passwordController.clear();
+  }
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,8 +90,8 @@ class _RegisterPageState extends State<RegisterPage> {
               const SizedBox(height: 30),
 
               MyTextField(
-                controller: usernameController,
-                hintText: 'Username',
+                controller: nameController,
+                hintText: 'Nama',
                 obsurceText: false,
               ),
 
@@ -65,7 +101,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
               MyTextField(
                 controller: usernameController,
-                hintText: 'Email',
+                hintText: 'Username',
                 obsurceText: false,
               ),
 
@@ -79,7 +115,15 @@ class _RegisterPageState extends State<RegisterPage> {
 
               const SizedBox(height: 10),
 
-              MyButton(onTap: signUserIn),
+              ElevatedButton(
+                  style: ButtonStyle(
+                      fixedSize: MaterialStatePropertyAll(Size(200, 40)),
+                      backgroundColor: MaterialStatePropertyAll(
+                          Color.fromARGB(255, 95, 92, 86))),
+                  onPressed: () {
+                    SignUp();
+                  },
+                  child: Text("SIGN UP")),
 
               const SizedBox(height: 20),
 

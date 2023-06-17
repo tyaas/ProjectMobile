@@ -2,19 +2,57 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:tugasakhir/components/square_file.dart';
-
+import 'package:tugasakhir/pages/home_page.dart';
 import '../components/my_button.dart';
 import '../components/my_textfieild.dart';
+import 'package:http/http.dart' as http;
+import 'package:async/async.dart';
+import 'dart:convert';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   LoginPage({super.key});
+  State<LoginPage> createState() => _LoginPageState();
+}
 
+class _LoginPageState extends State<LoginPage> {
   // text editing
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
 
-  // sign in user method
-  void signUserIn() {}
+  void login() async {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => HomePage()),
+    );
+    // print("kepencet");
+    // Mengirim HTTP GET request ke URL tertentu
+    final url = Uri.parse('http://192.168.202.12:8080/api_kelas/login.php');
+    final body = {
+      'username': usernameController.text,
+      'pass': passwordController.text
+    };
+    try {
+      final response = await http.post(
+        url,
+        body: body,
+      );
+      final data = jsonDecode(response.body);
+      if (data['success'] == true) {
+        print("login Berhasil");
+      } else {
+        print('username atau password salah');
+      }
+    } catch (error) {
+      print(error);
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    passwordController.clear();
+    usernameController.clear();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -82,8 +120,17 @@ class LoginPage extends StatelessWidget {
               const SizedBox(height: 25),
 
               // sign button
-              MyButton(
-                onTap: signUserIn,
+              ElevatedButton(
+                style: ButtonStyle(
+                    backgroundColor: MaterialStatePropertyAll(
+                        Color.fromARGB(255, 96, 95, 92)),
+                    fixedSize: MaterialStatePropertyAll(
+                      Size(200, 40),
+                    )),
+                onPressed: () {
+                  login();
+                },
+                child: Text("LOGIN"),
               ),
 
               const SizedBox(height: 20),
@@ -136,13 +183,18 @@ class LoginPage extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    'Register Now',
-                    style: TextStyle(
-                      color: Color.fromARGB(255, 255, 255, 255),
-                      fontWeight: FontWeight.bold,
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/register');
+                    },
+                    child: Text(
+                      'Register Now',
+                      style: TextStyle(
+                        color: Color.fromARGB(255, 255, 255, 255),
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
+                  )
                 ],
               )
             ],
